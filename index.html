@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>CryptoNinja 忍びの謎巡り</title>
+  <meta name="description" content="毎日ひとつ、忍者キャラと解く大人のAIなぞとき旅。暗号・推理・和文化クイズで里を育てる。">
+  <meta name="theme-color" content="#1f2a44">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="謎巡り">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="app-head">
+    <div class="app-title">🌕 忍びの謎巡り</div>
+    <div class="app-sub" id="home-date"></div>
+  </header>
+
+  <main>
+    <!-- ホーム -->
+    <section id="screen-home" class="screen active">
+      <div class="status-row">
+        <span id="home-streak"></span>
+        <span class="koban-chip">🪙 <b id="home-koban">0</b></span>
+      </div>
+
+      <div class="card" id="mission-card"></div>
+
+      <h3 class="sec-title">🤝 相棒をえらぶ</h3>
+      <div class="partner-row" id="partner-row"></div>
+      <p class="note" id="partner-note"></p>
+
+      <button class="btn primary big" id="btn-go">▶ 旅に出る</button>
+      <p class="note center" id="home-done-note" style="display:none">
+        ✅ 本日の任務は完了。明日また新しい任務が届く。<br>腕試しは何度でもどうぞ。
+      </p>
+    </section>
+
+    <!-- 任務プレイ -->
+    <section id="screen-play" class="screen">
+      <div id="play-body"></div>
+    </section>
+
+    <!-- 旅日記 -->
+    <section id="screen-diary" class="screen">
+      <h2 class="page-title">📖 旅日記</h2>
+      <div id="diary-list"></div>
+    </section>
+
+    <!-- 忍びの里 -->
+    <section id="screen-village" class="screen">
+      <h2 class="page-title">🏡 忍びの里</h2>
+      <div class="status-row">
+        <span>里の名: <b id="village-rank"></b></span>
+        <span class="koban-chip">🪙 <b id="village-koban">0</b></span>
+      </div>
+      <p class="note">ますをタップして、手に入れた飾りを置こう。</p>
+      <div class="village-grid" id="village-grid"></div>
+      <h3 class="sec-title">🛒 里の市(小判と交換)</h3>
+      <div id="shop-list"></div>
+    </section>
+
+    <!-- 蔵 -->
+    <section id="screen-kura" class="screen">
+      <h2 class="page-title">📦 蔵(あつめた物)</h2>
+      <div class="kura-tabs">
+        <button class="kura-tab active" data-tab="scrolls">📜 巻物</button>
+        <button class="kura-tab" data-tab="tools">🌀 忍具</button>
+        <button class="kura-tab" data-tab="stamps">🌾 しるし</button>
+      </div>
+      <div id="kura-body"></div>
+    </section>
+
+    <!-- 設定 -->
+    <section id="screen-settings" class="screen">
+      <h2 class="page-title">⚙ 設定</h2>
+
+      <h3 class="sec-title">むずかしさ</h3>
+      <div class="seg-row">
+        <button class="btn seg" data-diff="easy">やさしい</button>
+        <button class="btn seg" data-diff="normal">ふつう</button>
+        <button class="btn seg" data-diff="hard">手ごたえあり</button>
+      </div>
+      <p class="note">やさしい: 選択肢少なめ / 手ごたえあり: 暗号や記憶が濃くなる。いつ変えても大丈夫。</p>
+
+      <h3 class="sec-title">文字の大きさ</h3>
+      <div class="seg-row">
+        <button class="btn seg" data-fs="s">小</button>
+        <button class="btn seg" data-fs="m">中</button>
+        <button class="btn seg" data-fs="l">大</button>
+      </div>
+
+      <h3 class="sec-title">旅の記録</h3>
+      <p class="note" id="stat-line"></p>
+      <button class="btn danger" id="btn-reset">記録を消してはじめから</button>
+
+      <h3 class="sec-title">このアプリについて</h3>
+      <p class="note">
+        「CryptoNinja 忍びの謎巡り」は、毎日ひとつ届く任務を相棒の忍びと解く、大人のなぞとき旅です。
+        謎は日付を種にして端末の中で毎日生成されます(オフラインで遊べます・通信も課金もありません)。<br><br>
+        ・自由チャット、個人情報の入力、外部リンクはありません<br>
+        ・制限時間、ペナルティ、スタミナはありません<br><br>
+        キャラクターは CryptoNinja / CNP(CC0)にもとづく個人制作の試作品です。
+      </p>
+    </section>
+  </main>
+
+  <!-- 下部タブ -->
+  <nav class="tabbar">
+    <button id="tab-home" class="tab active"><span>🏠</span>任務</button>
+    <button id="tab-diary" class="tab"><span>📖</span>日記</button>
+    <button id="tab-village" class="tab"><span>🏡</span>里</button>
+    <button id="tab-kura" class="tab"><span>📦</span>蔵</button>
+    <button id="tab-settings" class="tab"><span>⚙</span>設定</button>
+  </nav>
+
+  <!-- 下からのシート -->
+  <div id="sheet" class="sheet"><div class="sheet-inner" id="sheet-body"></div></div>
+
+  <script src="data.js"></script>
+  <script src="gen.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

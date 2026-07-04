@@ -1,0 +1,17 @@
+{
+  "name": "CryptoNinja 忍びの謎巡り",
+  "short_name": "謎巡り",
+  "description": "毎日ひとつ、忍者キャラと解く大人のAIなぞとき旅。暗号・推理・和文化クイズで里を育てる。",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f0e3",
+  "theme_color": "#1f2a44",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
