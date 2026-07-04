@@ -80,6 +80,11 @@ function esc(s) {
 }
 function nl2br(s) { return esc(s).replace(/\n/g, "<br>"); }
 
+// キャラの顔アイコン(CNP公式画像・頭部を丸く切り抜き表示)
+function face(ch) {
+  return `<img class="char-face" src="${ch.img}" alt="${esc(ch.name)}">`;
+}
+
 // ---------- 画面切り替え ----------
 const SCREENS = ["home", "play", "diary", "village", "kura", "settings"];
 let current = "home";
@@ -129,7 +134,7 @@ function renderHome() {
     const c = DATA.chars[id];
     const sel = id === S.partner ? " selected" : "";
     return `<button class="partner-btn${sel}" data-char="${id}">
-      <span class="pemoji">${c.emoji}</span><span class="pname">${esc(c.name)}</span>
+      <img class="pimg" src="${c.img}" alt="${esc(c.name)}"><span class="pname">${esc(c.name)}</span>
       <span class="prole">${esc(c.role)}</span>
     </button>`;
   }).join("");
@@ -185,7 +190,7 @@ function renderStory(m) {
       <div class="area-line">${area.emoji} ${esc(area.name)}</div>
       <h2>「${esc(m.title)}」</h2>
       <p>${nl2br(m.intro)}</p>
-      <p class="char-line">${ch.emoji} ${esc(ch.name)}「${esc(ch.hintLine)}」</p>
+      <p class="char-line">${face(ch)} ${esc(ch.name)}「${esc(ch.hintLine)}」</p>
       <button class="btn primary big" id="btn-story-next">旅をはじめる</button>
     </div>`;
   $("#btn-story-next").onclick = renderPuzzle;
@@ -269,7 +274,7 @@ function showHint() {
   const lines = p.hints.slice(0, PLAY.hintLevel).map((h, i) =>
     `<p class="hint-line"><b>ヒント${i + 1}:</b> ${esc(h)}</p>`).join("");
   openSheet(`
-    <p class="char-line">${ch.emoji} ${esc(ch.name)}「${esc(ch.hintLine)}」</p>
+    <p class="char-line">${face(ch)} ${esc(ch.name)}「${esc(ch.hintLine)}」</p>
     ${lines}
     <button class="btn primary big" onclick="closeSheet()">なるほど</button>
   `);
@@ -289,7 +294,7 @@ function answer(i, btn) {
     fb.innerHTML = `
       <div class="ok-box">
         <p class="okmark">⭕ お見事!</p>
-        <p class="char-line">${ch.emoji} ${esc(ch.name)}「${esc(praise)}${bonus ? " これはわたしの得意分野。ほうびを弾みましょう。" : ""}」</p>
+        <p class="char-line">${face(ch)} ${esc(ch.name)}「${esc(praise)}${bonus ? " これはわたしの得意分野。ほうびを弾みましょう。" : ""}」</p>
         <p class="explain">${esc(p.explain)}</p>
         <button class="btn primary big" id="btn-next">つぎへ</button>
       </div>`;
@@ -304,7 +309,7 @@ function answer(i, btn) {
     btn.classList.add("wrong");
     PLAY.wrongs++;
     const missLine = GEN.pick(GEN.makeRng(p.title + "m" + PLAY.wrongs), ch.miss);
-    fb.innerHTML = `<p class="char-line miss">${ch.emoji} ${esc(ch.name)}「${esc(missLine)}」${PLAY.wrongs >= 2 ? "<br>💡 ヒントを見ても恥ではありませんよ。" : ""}</p>`;
+    fb.innerHTML = `<p class="char-line miss">${face(ch)} ${esc(ch.name)}「${esc(missLine)}」${PLAY.wrongs >= 2 ? "<br>💡 ヒントを見ても恥ではありませんよ。" : ""}</p>`;
   }
 }
 
@@ -403,11 +408,11 @@ function finishMission() {
       <p class="reward-line">🪙 小判 ×${clearBonus}(謎ごとの分とは別)</p>
       <p class="reward-line">${DATA.stamps[m.areaId].e} ${esc(DATA.stamps[m.areaId].name)}を捺した</p>
       ${dropHtml}
-      <p class="reward-line">🔥 旅は${S.streak}日目 / ${ch.emoji} ${esc(ch.name)}との絆 +1</p>
+      <p class="reward-line">🔥 旅は${S.streak}日目 / ${esc(ch.name)}との絆 +1</p>
       <div class="diary-preview">
         <h3>📖 旅日記に記した</h3>
         <p>${esc(text)}</p>
-        <p class="char-line">${ch.emoji} ${esc(comment)}</p>
+        <p class="char-line">${face(ch)} ${esc(comment)}</p>
       </div>
       <button class="btn primary big" id="btn-home3">🏠 里へもどる</button>
     </div>`;
@@ -430,7 +435,7 @@ function renderDiary() {
       <div class="d-head">${area.emoji} ${esc(d.date)}(${esc(waDate(d.date))}) ${"★".repeat(d.stars)}${"☆".repeat(3 - d.stars)}</div>
       <div class="d-title">「${esc(d.title)}」</div>
       <p>${esc(d.text)}</p>
-      <p class="char-line">${ch.emoji} ${esc(d.comment)}</p>
+      <p class="char-line">${face(ch)} ${esc(d.comment)}</p>
     </div>`;
   }).join("");
 }
@@ -563,7 +568,7 @@ function renderKura() {
       </div>`;
     }).join("") + `<div class="kura-card">
       <div class="k-name">🤝 相棒との絆</div>
-      <p>${DATA.charOrder.map(id => `${DATA.chars[id].emoji} ${DATA.chars[id].name}: ${S.bond[id] || 0}`).join(" / ")}</p>
+      <p class="bond-row">${DATA.charOrder.map(id => `${face(DATA.chars[id])} ${DATA.chars[id].name}: ${S.bond[id] || 0}`).join(" / ")}</p>
     </div>`;
   }
 }
@@ -606,7 +611,7 @@ function showIntro() {
     ・まちがえても失うものはありません<br>
     ・ヒントは3段階、いつでも見られます<br>
     ・解いた旅は日記に残り、ほうびで里を飾れます</p>
-    <p class="char-line">🐼 リーリー「急がず、あわてず、あきらめず。それが忍びの心得です」</p>
+    <p class="char-line">${face(DATA.chars.lily)} リーリー「急がず、あわてず、あきらめず。それが忍びの心得です」</p>
     <button class="btn primary big" onclick="closeSheet()">旅をはじめる</button>
   `);
   S.seenIntro = true;

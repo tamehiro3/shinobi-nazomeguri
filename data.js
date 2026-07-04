@@ -9,7 +9,7 @@ const DATA = {};
 // ---------- 相棒キャラ(CNP・CC0) ----------
 DATA.chars = {
   lily: {
-    id: "lily", name: "リーリー", emoji: "🐼",
+    id: "lily", name: "リーリー", emoji: "🐼", img: "img/leelee.png",
     role: "旅の案内役",
     desc: "はじめての人にもやさしい案内役。ヒントがていねい。",
     specialty: ["waculture", "tool", "oddity"],
@@ -24,7 +24,7 @@ DATA.chars = {
     ]
   },
   orochi: {
-    id: "orochi", name: "オロチ", emoji: "🐍",
+    id: "orochi", name: "オロチ", emoji: "🐍", img: "img/orochi.png",
     role: "暗号と道のプロ",
     desc: "口数は少ないが、暗号と道選びの腕は一級品。",
     specialty: ["cipher_shift", "cipher_dir", "map"],
@@ -39,7 +39,7 @@ DATA.chars = {
     ]
   },
   luna: {
-    id: "luna", name: "ルナ", emoji: "🐇",
+    id: "luna", name: "ルナ", emoji: "🐇", img: "img/luna.png",
     role: "月と暦の語り部",
     desc: "月、星、時間、暦の謎ならおまかせ。少し不思議な雰囲気。",
     specialty: ["koyomi", "memory", "number"],

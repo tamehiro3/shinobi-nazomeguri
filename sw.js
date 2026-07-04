@@ -1,5 +1,5 @@
 // Service Worker: オフラインでも遊べるようにキャッシュする
-const CACHE = "nazomeguri-v1";
+const CACHE = "nazomeguri-v2";
 const ASSETS = [
   "./",
   "./index.html",
@@ -10,7 +10,10 @@ const ASSETS = [
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
-  "./icons/apple-touch-icon.png"
+  "./icons/apple-touch-icon.png",
+  "./img/leelee.png",
+  "./img/orochi.png",
+  "./img/luna.png"
 ];
 
 self.addEventListener("install", e => {
