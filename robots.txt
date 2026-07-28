@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+Sitemap: https://tamehiro3.github.io/shinobi-nazomeguri/sitemap.xml

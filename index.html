@@ -12,6 +12,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="謎巡り">
+  <link rel="canonical" href="https://tamehiro3.github.io/shinobi-nazomeguri/">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -39,17 +40,29 @@
       <p class="note center" id="home-done-note" style="display:none">
         ✅ 本日の任務は完了。明日また新しい任務が届く。<br>腕試しは何度でもどうぞ。
       </p>
+
+      <div id="ad-home" class="ad-box" hidden></div>
+
+      <h3 class="sec-title">📚 読みもの</h3>
+      <p class="note">謎の解き方のコツや、クイズに出てくる和のことばを別ページにまとめています。</p>
+      <ul class="link-list">
+        <li><a href="guide.html">遊び方と10種類の謎の解き方</a></li>
+        <li><a href="wa-koyomi.html">和の暦と行事の読みもの</a></li>
+        <li><a href="ninja-jiten.html">忍具と忍びのことば事典</a></li>
+      </ul>
     </section>
 
     <!-- 任務プレイ -->
     <section id="screen-play" class="screen">
       <div id="play-body"></div>
+      <div id="ad-result" class="ad-box" hidden></div>
     </section>
 
     <!-- 旅日記 -->
     <section id="screen-diary" class="screen">
       <h2 class="page-title">📖 旅日記</h2>
       <div id="diary-list"></div>
+      <div id="ad-diary" class="ad-box" hidden></div>
     </section>
 
     <!-- 忍びの里 -->
@@ -74,6 +87,7 @@
         <button class="kura-tab" data-tab="stamps">🌾 しるし</button>
       </div>
       <div id="kura-body"></div>
+      <div id="ad-kura" class="ad-box" hidden></div>
     </section>
 
     <!-- 設定 -->
@@ -102,11 +116,19 @@
       <h3 class="sec-title">このアプリについて</h3>
       <p class="note">
         「CryptoNinja 忍びの謎巡り」は、毎日ひとつ届く任務を相棒の忍びと解く、大人のなぞとき旅です。
-        謎は日付を種にして端末の中で毎日生成されます(オフラインで遊べます・通信も課金もありません)。<br><br>
-        ・自由チャット、個人情報の入力、外部リンクはありません<br>
-        ・制限時間、ペナルティ、スタミナはありません<br><br>
+        謎は日付を種にして端末の中で毎日生成されるので、機内モードでも最後まで解けます。<br><br>
+        ・自由チャット、個人情報の入力はありません<br>
+        ・制限時間、ペナルティ、スタミナはありません<br>
+        ・遊ぶのに料金はかかりません。運営費をまかなうため広告を掲載しています<br>
+        ・謎を解いている画面には広告を出しません<br><br>
         キャラクターは CryptoNinja Partners(CNP・CC0)の公式画像を使用した個人制作の試作品です。
       </p>
+      <ul class="link-list">
+        <li><a href="about.html">このゲームについて・運営者情報</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="terms.html">利用規約</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
     </section>
   </main>
 
@@ -122,6 +144,18 @@
   <!-- 下からのシート -->
   <div id="sheet" class="sheet"><div class="sheet-inner" id="sheet-body"></div></div>
 
+  <footer class="site-foot">
+    <nav>
+      <a href="guide.html">遊び方</a>
+      <a href="about.html">運営者情報</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="terms.html">利用規約</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+    <p>© 2026 tamehiro ／ キャラクターは CryptoNinja Partners(CC0)を利用した個人制作です。</p>
+  </footer>
+
+  <script src="ads.js"></script>
   <script src="data.js"></script>
   <script src="gen.js"></script>
   <script src="game.js"></script>

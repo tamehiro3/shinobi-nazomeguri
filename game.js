@@ -101,6 +101,12 @@ function show(name) {
   if (name === "village") renderVillage();
   if (name === "kura") renderKura();
   if (name === "settings") renderSettings();
+
+  // 広告: 謎を解いている画面には出さない(結果画面になったら finish 側で出す)
+  if (name !== "play") Ads.hide("ad-result");
+  if (name === "home") Ads.mount("ad-home", "home");
+  if (name === "diary") Ads.mount("ad-diary", "list");
+  if (name === "kura") Ads.mount("ad-kura", "list");
 }
 
 // ============================================================
@@ -228,6 +234,7 @@ function visualHtml(v) {
 }
 
 function renderPuzzle() {
+  Ads.hide("ad-result"); // 出題中は広告を出さない(選択肢の誤タップ防止)
   const p = PLAY.puzzle;
   if (PLAY.phase === "memorize") {
     $("#play-body").innerHTML = `
@@ -347,6 +354,7 @@ function finishFree(bonus) {
     </div>`;
   $("#btn-again").onclick = startFreePlay;
   $("#btn-home2").onclick = () => show("home");
+  Ads.mount("ad-result", "result");
 }
 
 function finishMission() {
@@ -417,6 +425,7 @@ function finishMission() {
       <button class="btn primary big" id="btn-home3">🏠 里へもどる</button>
     </div>`;
   $("#btn-home3").onclick = () => show("home");
+  Ads.mount("ad-result", "result");
 }
 
 // ============================================================
