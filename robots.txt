@@ -1,3 +1,7 @@
+# 注意: robots.txt はホスト名の直下 (https://tamehiro3.github.io/robots.txt) しか
+# クローラーに読まれません。このファイルはサブディレクトリにあるため効力がなく、
+# 将来この内容を独自ドメインやユーザーページのルートへ移したときのための控えです。
+# 実際に効かせたい場合は tamehiro3/tamehiro3.github.io のトップに置いてください。
 User-agent: *
 Allow: /
 

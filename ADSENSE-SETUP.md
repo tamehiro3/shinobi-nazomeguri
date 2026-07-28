@@ -113,6 +113,14 @@ google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
 このゲームの `privacy.html` / `about.html` / `terms.html` / `contact.html` が
 そのまま雛形として使えます。文面をルート用に直して置いてください。
 
+### robots.txt も同じ話
+
+`robots.txt` も `ads.txt` と同様、**ホスト名の直下しか読まれません**。
+このリポジトリにも `robots.txt` を置いてありますが、サブディレクトリなので効力はありません
+（将来ルートへ移すときの控えです）。実際に効かせたい場合はルートリポジトリに置いてください。
+
+`sitemap.xml` はサブディレクトリにあっても、Search Console から手動で送信すれば使えます。
+
 ---
 
 ## STEP 4. 審査に出す
