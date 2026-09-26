@@ -95,6 +95,8 @@ function show(name) {
     const tab = $("#tab-" + s);
     if (tab) tab.classList.toggle("active", s === name);
   }
+  document.body.dataset.screen = name;
+  if (typeof ADS !== "undefined") ADS.update(name); // 謎解き中は広告を出さない
   window.scrollTo(0, 0);
   if (name === "home") renderHome();
   if (name === "diary") renderDiary();

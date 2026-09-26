@@ -292,7 +292,7 @@ const GEN = (() => {
     };
   }
 
-  // 8. 和文化クイズ(固定50問から出題)
+  // 8. 和文化クイズ(固定80問から出題)
   function genQuiz(rng, p, usedIdx) {
     let pool = DATA.quiz.map((_, i) => i).filter(i => !usedIdx.includes(i));
     if (pool.length === 0) pool = DATA.quiz.map((_, i) => i);
