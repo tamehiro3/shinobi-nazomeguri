@@ -12,6 +12,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="謎巡り">
+  <!-- Google AdSense(pub-2175971581635704)。広告枠の設定は ads.js -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2175971581635704" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -103,12 +105,24 @@
       <p class="note">
         「CryptoNinja 忍びの謎巡り」は、毎日ひとつ届く任務を相棒の忍びと解く、大人のなぞとき旅です。
         謎は日付を種にして端末の中で毎日生成されます(オフラインで遊べます・通信も課金もありません)。<br><br>
-        ・自由チャット、個人情報の入力、外部リンクはありません<br>
-        ・制限時間、ペナルティ、スタミナはありません<br><br>
+        ・自由チャット、個人情報の入力はありません<br>
+        ・制限時間、ペナルティ、スタミナ、課金はありません<br>
+        ・謎解き中の画面には広告を表示しません(運営のため、それ以外の画面の下に広告を1枠表示します)<br><br>
+        くわしい遊び方は <a href="about.html">遊び方・謎の解き方</a>、
+        情報の取り扱いは <a href="/privacy.html">プライバシーポリシー</a> をご覧ください。<br><br>
         キャラクターは CryptoNinja Partners(CNP・CC0)の公式画像を使用した個人制作の試作品です。
       </p>
     </section>
   </main>
+
+  <!-- 広告枠(謎解き中は非表示・設定は ads.js) -->
+  <aside id="ad-area" class="ad-area" hidden aria-label="広告"></aside>
+
+  <footer class="app-foot">
+    <a href="about.html">遊び方・謎の解き方</a> ・
+    <a href="/privacy.html">プライバシーポリシー</a> ・
+    <a href="/">しのびのゲーム工房</a>
+  </footer>
 
   <!-- 下部タブ -->
   <nav class="tabbar">
@@ -124,6 +138,7 @@
 
   <script src="data.js"></script>
   <script src="gen.js"></script>
+  <script src="ads.js"></script>
   <script src="game.js"></script>
 </body>
 </html>

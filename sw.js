@@ -1,12 +1,14 @@
 // Service Worker: オフラインでも遊べるようにキャッシュする
-const CACHE = "nazomeguri-v2";
+const CACHE = "nazomeguri-v3";
 const ASSETS = [
   "./",
   "./index.html",
   "./style.css",
   "./data.js",
   "./gen.js",
+  "./ads.js",
   "./game.js",
+  "./about.html",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
